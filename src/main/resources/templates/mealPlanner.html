@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns: th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-spring-security5">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment1 Home Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+</head>
+<body>
+<nav class = "navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <button type ="button" class="navbar-toggle collapsed"
+                data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span> <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#" th:href="@{/}">Recipe Web Application</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">logout</a></li>
+        </ul>
+    </div>
+</nav>
+<br>
+<br>
+
+<div class="container">
+    <h1>Assignment1</h1>
+</div>
+
+<h1 th:text="'Plan Meals'">Meal Planner</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Date:</th>
+            <th>Recipe:<br></th>
+        </tr>
+        </thead>
+    <tbody>
+        <td>date</td>
+        <td>recipe</td>
+    </tbody>
+</table>
+
+<h1>Schedule a Meal</h1>
+<form th:action="@{/login}" method="post">
+    <!-- error msg -->
+    <div th:if="${param.error}">
+        <div class="alert alert-danger">Invalid params</div>
+    </div>
+    <div th:if="${param.logout}">
+        <div class="alert alert-info">Meal scheduled successfully.</div>
+    </div>
+    <div class="recipe-dropdown">
+        Recipes: <select name="recipe" id="recipe">
+        <option value="" selected="selected">Select recipe</option>
+    </select>
+    </div>
+    <div class ="form-group">
+        <label for="password">Date</label> :
+        <input type="date" class="form-control" id="password" name = "password" value="2017-06-01"
+               placeholder="Enter your Password" autofocus="autofocus">
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <input type="submit" name="meal-submit"
+                       id="meal-submit" class="form-control btn btn-primary" value="Schedule Meal">
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>

@@ -30,4 +30,8 @@ public class RegistrationController {
         return "/registerSuccess";
     }
 
+    @RequestMapping({"/mealPlanner"})
+    public String mealPlan() {
+        return "/mealPlanner";
+    }
 }

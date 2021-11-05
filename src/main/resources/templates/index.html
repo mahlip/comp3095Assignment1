@@ -24,6 +24,9 @@
         <ul class="nav navbar-nav">
             <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">logout</a></li>
         </ul>
+        <ul class="nav navbar-nav">
+            <li sec:authorize="isAuthenticated()"><a th:href="@{/mealPlanner}">Meal Planner</a></li>
+        </ul>
     </div>
 </nav>
 <br>
