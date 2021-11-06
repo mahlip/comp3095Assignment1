@@ -5,5 +5,7 @@ import ca.gbc.comp3095.assignment1.web.datatransfer.AppUserRegistrationDataTrans
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 public interface AppUserService extends UserDetailsService {
+    AppUser getUser(String name);
+
     AppUser save(AppUserRegistrationDataTransfer appUserRegistrationDataTransfer);
 }

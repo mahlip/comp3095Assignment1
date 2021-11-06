@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 th:text="${user.name}"></h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Recipe Name</th>
+        <th>Recipe</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user: ${user}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.recipe}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

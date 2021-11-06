@@ -1,7 +1,9 @@
 package ca.gbc.comp3095.assignment1.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name ="APP_USER", uniqueConstraints = @UniqueConstraint( columnNames = "EMAIL"))
@@ -33,6 +35,13 @@ public class AppUser{
             )
     )
     private Collection<AppUserRole> roles;
+
+    @OneToMany(
+            mappedBy = "owner",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Recipe> recipes = new ArrayList<>();
 
     public AppUser(String firstName,
                 String lastName,
@@ -98,4 +107,14 @@ public class AppUser{
     public void setRoles(Collection<AppUserRole> roles) {
         this.roles = roles;
     }
+
+    public List<Recipe> getRecipes() {
+        return recipes;
+    }
+
+    public void addRecipe(Recipe recipe) {
+        recipe.setOwner(this);
+        recipes.add(recipe);
+    }
+
 }
