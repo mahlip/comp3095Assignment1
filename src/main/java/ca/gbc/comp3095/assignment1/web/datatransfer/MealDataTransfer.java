@@ -11,10 +11,10 @@ public class MealDataTransfer {
     private boolean shared;
 
 
-    public MealDataTransfer(String ingredients,
-                              String prepWork,
-                              String instructions,
-                              String name,
+    /*public RecipeDataTransfer(String ingredients,
+                  String prepWork,
+                  String instructions,
+                  String name,
                               boolean shared,
                               String username) {
         //super();
@@ -24,7 +24,7 @@ public class MealDataTransfer {
         this.name = name;
         this.username = username;
         this.shared = shared;
-    }
+    }*/
 
     public boolean getShared(){
         return shared;

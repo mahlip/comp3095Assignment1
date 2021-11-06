@@ -52,6 +52,9 @@
     <div class="recipe-dropdown">
         Recipes: <select name="recipe" id="recipe">
         <option value="" selected="selected">Select recipe</option>
+        <tr th:each="recipe: ${recipes}">
+            <option value="" selected="selected" th:text="${recipe.name}"></option>
+        </tr>
     </select>
     </div>
     <div class ="form-group">

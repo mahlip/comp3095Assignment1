@@ -1,10 +1,11 @@
 package ca.gbc.comp3095.assignment1.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Table(name ="MEAL")
-public class MealPlan {
+public class MealPlan{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "MEAL_ID")
