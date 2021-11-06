@@ -29,16 +29,23 @@ public class Recipe{
     @JoinColumn(name = "USER_ID")
     private AppUser owner;
 
+    @Column(name ="PUBLIC")
+    private boolean shared;
+
 
     public Recipe(String ingredients,
                   String prepwork,
                   String instructions,
-                  String name) {
+                  String name,
+                  boolean shared,
+                  AppUser user) {
         //super();
         this.ingredients = ingredients;
         this.prepwork = prepwork;
         this.recipe = instructions;
         this.name = name;
+        this.shared = shared;
+        this.owner = user;
     }
 
     public Recipe() {
@@ -79,6 +86,18 @@ public class Recipe{
 
     public AppUser getOwner() {
         return owner;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public boolean isShared() {
+        return shared;
+    }
+
+    public void setShared(boolean shared) {
+        this.shared = shared;
     }
 
     public void setOwner(AppUser owner) {

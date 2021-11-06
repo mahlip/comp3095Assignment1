@@ -54,6 +54,11 @@ public class AppUserServiceImpl implements AppUserService{
                 .User(appUser.getEmail(), appUser.getPassword(), mapRolesToAuthorities(appUser.getRoles()));
     }
 
+    public AppUser getUser(String username){
+        AppUser appUser = appUserRepository.findByEmail(username);
+        return appUser;
+    }
+
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<AppUserRole> roles){
         return roles.stream().map(role-> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }

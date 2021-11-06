@@ -1,48 +1,43 @@
 package ca.gbc.comp3095.assignment1.service;
 
-import ca.gbc.comp3095.assignment1.model.AppUser;
-import ca.gbc.comp3095.assignment1.model.AppUserRole;
 import ca.gbc.comp3095.assignment1.model.Recipe;
 import ca.gbc.comp3095.assignment1.model.repository.RecipeRepository;
-import ca.gbc.comp3095.assignment1.web.datatransfer.AppUserRegistrationDataTransfer;
 import ca.gbc.comp3095.assignment1.web.datatransfer.RecipeDataTransfer;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.stream.Collectors;
+import java.util.List;
+import java.util.Optional;
 
 @Service
-public class RecipeServiceImpl {
+public class RecipeServiceImpl implements RecipeService{
     private RecipeRepository recipeRepository;
+    private AppUserService appUserService;
 
-    public RecipeServiceImpl(RecipeRepository recipeRepository) {
+    public RecipeServiceImpl(RecipeRepository recipeRepository, AppUserService appUserService) {
         this.recipeRepository = recipeRepository;
+        this.appUserService = appUserService;
     }
 
-    public Recipe save(String ingredients,
-                       String prepwork,
-                       String instructions,
-                       String name) {
-        Recipe recipe = new Recipe(ingredients,prepwork,instructions,name);
-
+    @Override
+    public Recipe save(RecipeDataTransfer recipeDataTransfer) {
+        Recipe recipe = new Recipe(recipeDataTransfer.getIngredients(),
+                recipeDataTransfer.getPrepWork(),
+                recipeDataTransfer.getRecipe(),
+                recipeDataTransfer.getName(),
+                recipeDataTransfer.getShared(),
+                appUserService.getUser(recipeDataTransfer.getUsername()));
         return recipeRepository.save(recipe);
     }
 
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        AppUser appUser = appUserRepository.findByEmail(username);
-        if(appUser == null){
-            throw new UsernameNotFoundException("Invalid username or password.");
-        }
-        return new org.springframework.security.core.userdetails
-                .User(appUser.getEmail(), appUser.getPassword(), mapRolesToAuthorities(appUser.getRoles()));
+    @Override
+    public List<Recipe> findAll(){
+        return recipeRepository.findAll();
     }
 
-    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<AppUserRole> roles){
-        return roles.stream().map(role-> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
+    @Override
+    public Recipe findById(long id) {
+        Recipe recipe = recipeRepository.findById(id).get();
+        return recipe;
     }
+
+
 }

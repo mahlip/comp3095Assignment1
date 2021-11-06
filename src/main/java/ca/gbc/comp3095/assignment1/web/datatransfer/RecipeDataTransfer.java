@@ -1,25 +1,40 @@
 package ca.gbc.comp3095.assignment1.web.datatransfer;
 
+import ca.gbc.comp3095.assignment1.model.AppUser;
+
 public class RecipeDataTransfer {
     private String ingredients;
-    private String prepwork;
+    private String prepWork;
     private String recipe;
     private String name;
-    private AppUser owner;
+    private String username;
+    private boolean shared;
 
 
-    public Recipe(String ingredients,
-                  String prepwork,
+    public RecipeDataTransfer(String ingredients,
+                  String prepWork,
                   String instructions,
-                  String name) {
+                  String name,
+                              boolean shared,
+                              String username) {
         //super();
         this.ingredients = ingredients;
-        this.prepwork = prepwork;
+        this.prepWork = prepWork;
         this.recipe = instructions;
         this.name = name;
+        this.username = username;
+        this.shared = shared;
     }
 
-    public Recipe() {
+    public boolean getShared(){
+        return shared;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public RecipeDataTransfer() {
 
     }
 
@@ -39,12 +54,12 @@ public class RecipeDataTransfer {
         this.ingredients = ingredients;
     }
 
-    public String getPrepwork() {
-        return prepwork;
+    public String getPrepWork() {
+        return prepWork;
     }
 
-    public void setPrepwork(String prepwork) {
-        this.prepwork = prepwork;
+    public void setPrepWork(String prepwork) {
+        this.prepWork = prepwork;
     }
 
     public String getRecipe() {
@@ -54,13 +69,4 @@ public class RecipeDataTransfer {
     public void setRecipe(String recipe) {
         this.recipe = recipe;
     }
-
-    public AppUser getOwner() {
-        return owner;
-    }
-
-    public void setOwner(AppUser owner) {
-        this.owner = owner;
-    }
 }
-
