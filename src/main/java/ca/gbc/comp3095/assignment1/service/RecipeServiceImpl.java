@@ -5,7 +5,6 @@ import ca.gbc.comp3095.assignment1.model.repository.RecipeRepository;
 import ca.gbc.comp3095.assignment1.web.datatransfer.RecipeDataTransfer;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class RecipeServiceImpl implements RecipeService{
@@ -18,13 +17,13 @@ public class RecipeServiceImpl implements RecipeService{
     }
 
     @Override
-    public Recipe save(RecipeDataTransfer recipeDataTransfer) {
+    public Recipe save(RecipeDataTransfer recipeDataTransfer, String name) {
         Recipe recipe = new Recipe(recipeDataTransfer.getIngredients(),
                 recipeDataTransfer.getPrepWork(),
                 recipeDataTransfer.getRecipe(),
                 recipeDataTransfer.getName(),
-                recipeDataTransfer.getShared(),
-                appUserService.getUser(recipeDataTransfer.getUsername()));
+                !recipeDataTransfer.getShared(),
+                appUserService.getUser(name));
         return recipeRepository.save(recipe);
     }
 
@@ -39,5 +38,8 @@ public class RecipeServiceImpl implements RecipeService{
         return recipe;
     }
 
+    public List<Recipe> findByKeyword(String keyword){
+        return recipeRepository.searchIgnoreCase(keyword);
+    }
 
 }

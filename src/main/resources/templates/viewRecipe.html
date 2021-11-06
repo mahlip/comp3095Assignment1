@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 th:text="${recipe.name}"></h1>
+<h1>Ingredients:</h1>
+<h1 th:text="${recipe.ingredients}"></h1>
+<h1>Prepwork:</h1>
+<h1><span th:if="${recipe.prepwork} == ''">None</span>
+<span th:unless="${recipe.prepwork} == ''"><span th:text="${recipe.prepwork}"></span></span></h1>
+<h1>Instructions:</h1>
+<h1 th:text="${recipe.recipe}"></h1>
+
+
+
+</html>

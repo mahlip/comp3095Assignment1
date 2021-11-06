@@ -5,7 +5,6 @@
     <title>Title</title>
 </head>
 <body>
-<h1 th:text="${recipe.name}"></h1><h1> was added to the Database</h1>
 
 <table>
     <thead>
@@ -18,7 +17,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="user: ${recipe}">
+    <tr th:each="recipe: ${recipes}">
         <td th:text="${recipe.id}"></td>
         <td th:text="${recipe.name}"></td>
         <td th:text="${recipe.ingredients}"></td>

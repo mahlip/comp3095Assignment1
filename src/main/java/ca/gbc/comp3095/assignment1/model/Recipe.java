@@ -12,12 +12,12 @@ public class Recipe{
     @Column(name = "RECIPE_ID")
     private Long id;
 
-    @Column(name="INGREDIENTS", nullable = false)
+    @Column(name="INGREDIENTS", nullable = false, length = 100000)
     private String ingredients;
 
-    @Column(name ="PREPWORK")
+    @Column(name ="PREPWORK", length = 100000)
     private String prepwork;
-    @Column(name ="RECIPE", nullable = false)
+    @Column(name ="RECIPE", nullable = false, length = 100000)
     private String recipe;
 
     @Column(name ="NAME", nullable = false)
