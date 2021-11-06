@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns: th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Recipe</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+
+</head>
+<body>
+<!-- create navigation bar (header) -->
+    <nav class = "navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <button type ="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" th:href="@{/}">Recipe Web Application</a>
+        </div>
+    </nav>
+<br>
+<br>
+<!-- Create HTML registration form -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+
+                    <!-- success message -->
+                <h1>Create Recipe</h1>
+
+
+                <form th:action="@{/processRecipe}" method="post" th:object="${record}">
+                    <div class="form-group">
+                        <label class="control-label" for="name">
+                            Recipe Name
+                        </label>
+                        <input type="text" id="name" class="form-control" th:field="*{name}" required/>
+                    </div>
+
+                    <label class="control-label" for="ingredients">
+                        Ingredients
+                    </label>
+                    <textarea id = "ingredients" name="ingredients" th:field="*{ingredients}" required>Enter text here...</textarea>
+                    <label class="control-label" for="prepWork">
+                        Prep Work
+                    </label>
+                    <textarea id = "prepWork" name="prepWork" th:field="*{prepWork}">Enter text here...</textarea>
+                    <label class="control-label" for="recipe">
+                        Instructions
+                    </label>
+                    <textarea id = "recipe" name="recipe" th:field="*{recipe}" required>Enter text here...</textarea>
+
+                    <input type="checkbox" id="private" name="private" th:field="*{shared}">
+                    <label for="private"> Keep Recipe Private</label>
+
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
