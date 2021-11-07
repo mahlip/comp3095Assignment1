@@ -1,11 +1,17 @@
 package ca.gbc.comp3095.assignment1.model;
 
+import org.thymeleaf.expression.Dates;
+
+
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Date;
+
 
 @Entity
 @Table(name ="MEAL")
 public class MealPlan{
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "MEAL_ID")
@@ -15,7 +21,7 @@ public class MealPlan{
     private String name;
 
     @Column(name ="Date", nullable = false)
-    private String date;
+    private Date date;
 
     @ManyToOne(
             fetch = FetchType.LAZY
@@ -28,7 +34,7 @@ public class MealPlan{
 
 
     public MealPlan(String name,
-                  String date,
+                  Date date,
                   AppUser user) {
         //super();
         this.name = name;
@@ -53,12 +59,12 @@ public class MealPlan{
         return name;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
-        this.name = date;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public AppUser getOwner() {

@@ -41,22 +41,36 @@
             <h1>Create MealPlan</h1>
 
             <form th:action="@{/processMeal}" method="post" th:object="${record}">
+
                 <div class="form-group">
                     <label class="control-label" for="name">
                         Recipe Name
                     </label>
-                    <input type="text" id="name" class="form-control" th:field="*{name}" required/>
+                    <div class="recipe-dropdown">
+                        <select name="recipe" id="recipe" th:field="*{name}">
+                            <option value="" selected="selected">Select recipe</option>
+                            <tr th:each="recipe: ${recipes}">
+                                <option th:value="${recipe.name}" id="name" th:text="${recipe.name}"></option>
+                            </tr>
+                        </select>
+                    </div>
                 </div>
+
                 <div class="form-group">
                     <label class="control-label" for="date">
                         Date
                     </label>
-                    <textarea id = "date" name="date" th:field="*{date}">Enter date here...</textarea>
+                    <input type="date" id="date" name="meal-date"
+                           value="2021-11-06"
+                           min="2021-11-06" th:field="*{date}">
                 </div>
+
                 <div class="form-group">
                     <button type="submit" class="btn btn-success">Submit</button>
                 </div>
+
             </form>
+
         </div>
     </div>
 </div>

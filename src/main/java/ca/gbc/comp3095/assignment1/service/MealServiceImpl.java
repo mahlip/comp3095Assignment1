@@ -11,6 +11,7 @@ public class MealServiceImpl implements MealService{
     private MealRepository mealRepository;
     private AppUserService appUserService;
 
+
     public MealServiceImpl(MealRepository mealRepository, AppUserService appUserService) {
         this.mealRepository = mealRepository;
         this.appUserService = appUserService;

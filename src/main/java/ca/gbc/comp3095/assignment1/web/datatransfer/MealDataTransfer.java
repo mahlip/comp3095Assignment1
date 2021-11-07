@@ -1,12 +1,20 @@
 package ca.gbc.comp3095.assignment1.web.datatransfer;
 
 import ca.gbc.comp3095.assignment1.model.AppUser;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
+import java.util.Date;
 
+@Component
 public class MealDataTransfer {
     private String name;
-    private String date;
     private String recipe;
     private String username;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private Date date;
 
     public MealDataTransfer() {
 
@@ -20,12 +28,12 @@ public class MealDataTransfer {
         this.name = name;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
-        this.recipe = date;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getRecipe() {
