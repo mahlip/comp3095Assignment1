@@ -1,3 +1,12 @@
+/*
+ * Project: Recipe Web Application
+ * Assignment: Assignment 1
+ * Author(s): Adam Vandyke
+ * Student Number: 101023594
+ * Date: 2021-11-6
+ * Description: Meal Planner Controller for the purpose of controlling individual actions associated with the Meal Planner.
+ */
+
 package ca.gbc.comp3095.assignment1.web;
 
 import ca.gbc.comp3095.assignment1.model.MealPlan;
@@ -10,7 +19,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 
 import java.security.Principal;
 import java.util.ArrayList;

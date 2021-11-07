@@ -1,3 +1,12 @@
+/*
+ * Project: Recipe Web Application
+ * Assignment: Assignment 1
+ * Author(s): Adam Vandyke
+ * Student Number: 101023594
+ * Date: 2021-11-6
+ * Description: Meal Planner Class for the purpose of creating new meal plans and tables.
+ */
+
 package ca.gbc.comp3095.assignment1.model;
 
 import org.thymeleaf.expression.Dates;

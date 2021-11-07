@@ -1,3 +1,12 @@
+/*
+ * Project: Recipe Web Application
+ * Assignment: Assignment 1
+ * Author(s): Adam Vandyke
+ * Student Number: 101023594
+ * Date: 2021-11-6
+ * Description: Meal Planner Data Transfer for the purpose of providing meal data related functions.
+ */
+
 package ca.gbc.comp3095.assignment1.web.datatransfer;
 
 import ca.gbc.comp3095.assignment1.model.AppUser;
