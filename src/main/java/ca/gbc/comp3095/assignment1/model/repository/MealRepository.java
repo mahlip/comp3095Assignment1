@@ -5,5 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-public interface MealRepository {
+import java.util.List;
+
+@Repository
+public interface MealRepository extends JpaRepository<MealPlan, Long> {
+    @Query("SELECT m FROM MealPlan m WHERE LOWER(CONCAT(m.name,' ',m.date)) LIKE LOWER(concat('%', concat(?1, '%')))")
+    public List<MealPlan> searchIgnoreCase(String keyword);
 }

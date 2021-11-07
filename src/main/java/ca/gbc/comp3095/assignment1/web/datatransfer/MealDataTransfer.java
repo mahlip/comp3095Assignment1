@@ -3,36 +3,10 @@ package ca.gbc.comp3095.assignment1.web.datatransfer;
 import ca.gbc.comp3095.assignment1.model.AppUser;
 
 public class MealDataTransfer {
-    private String ingredients;
-    private String prepWork;
-    private String recipe;
     private String name;
+    private String date;
+    private String recipe;
     private String username;
-    private boolean shared;
-
-
-    /*public RecipeDataTransfer(String ingredients,
-                  String prepWork,
-                  String instructions,
-                  String name,
-                              boolean shared,
-                              String username) {
-        //super();
-        this.ingredients = ingredients;
-        this.prepWork = prepWork;
-        this.recipe = instructions;
-        this.name = name;
-        this.username = username;
-        this.shared = shared;
-    }*/
-
-    public boolean getShared(){
-        return shared;
-    }
-
-    public String getUsername() {
-        return username;
-    }
 
     public MealDataTransfer() {
 
@@ -46,20 +20,12 @@ public class MealDataTransfer {
         this.name = name;
     }
 
-    public String getIngredients() {
-        return ingredients;
+    public String getDate() {
+        return date;
     }
 
-    public void setIngredients(String ingredients) {
-        this.ingredients = ingredients;
-    }
-
-    public String getPrepWork() {
-        return prepWork;
-    }
-
-    public void setPrepWork(String prepwork) {
-        this.prepWork = prepwork;
+    public void setDate(String date) {
+        this.recipe = date;
     }
 
     public String getRecipe() {

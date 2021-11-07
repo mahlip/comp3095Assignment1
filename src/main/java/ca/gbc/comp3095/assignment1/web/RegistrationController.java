@@ -29,9 +29,4 @@ public class RegistrationController {
         appUserService.save(appUserRegistrationDataTransfer);
         return "/registerSuccess";
     }
-
-    @RequestMapping({"/mealPlanner"})
-    public String mealPlan() {
-        return "/mealPlanner";
-    }
 }

@@ -11,16 +11,11 @@ public class MealPlan{
     @Column(name = "MEAL_ID")
     private Long id;
 
-    @Column(name="INGREDIENTS", nullable = false)
-    private String ingredients;
-
-    @Column(name ="PREPWORK")
-    private String prepwork;
-    @Column(name ="Meal", nullable = false)
-    private String recipe;
-
-    @Column(name ="NAME", nullable = false)
+    @Column(name="Name", nullable = false)
     private String name;
+
+    @Column(name ="Date", nullable = false)
+    private String date;
 
     @ManyToOne(
             fetch = FetchType.LAZY
@@ -32,17 +27,12 @@ public class MealPlan{
     private boolean shared;
 
 
-    public MealPlan(String ingredients,
-                  String prepwork,
-                  String instructions,
-                  String name,
-                  boolean shared,
+    public MealPlan(String name,
+                  String date,
                   AppUser user) {
         //super();
-        this.ingredients = ingredients;
-        this.prepwork = prepwork;
-        this.recipe = instructions;
         this.name = name;
+        this.date = date;
         this.shared = shared;
         this.owner = user;
     }
@@ -59,28 +49,16 @@ public class MealPlan{
         this.name = name;
     }
 
-    public String getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(String ingredients) {
-        this.ingredients = ingredients;
-    }
-
-    public String getPrepwork() {
-        return prepwork;
-    }
-
-    public void setPrepwork(String prepwork) {
-        this.prepwork = prepwork;
-    }
-
     public String getMeal() {
-        return recipe;
+        return name;
     }
 
-    public void setRecipe(String recipe) {
-        this.recipe = recipe;
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.name = date;
     }
 
     public AppUser getOwner() {
@@ -93,10 +71,6 @@ public class MealPlan{
 
     public boolean isShared() {
         return shared;
-    }
-
-    public void setShared(boolean shared) {
-        this.shared = shared;
     }
 
     public void setOwner(AppUser owner) {
