@@ -37,13 +37,12 @@
                         View
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/" th:href="@{viewRecipe}">view recipe</a>
                         <a class="dropdown-item" href="/" th:href="@{viewRecipes}">view recipes</a>
                         <a class="dropdown-item" href="/" th:href="@{viewMeals}">vew meals</a>
                     </div>
                 </li>
             </ul>
-        </div>
+        </div><a sec:authorize="isAuthenticated()" th:href="@{/logout}" style="color: black;">logout</a>
     </nav>
 <!-- Create HTML registration form -->
 <div class="container m-5">

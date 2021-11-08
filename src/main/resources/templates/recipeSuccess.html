@@ -38,13 +38,13 @@
                         View
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/" th:href="@{viewRecipe}">view recipe</a>
                         <a class="dropdown-item" href="/" th:href="@{viewRecipes}">view recipes</a>
                         <a class="dropdown-item active" href="/" th:href="@{viewMeals}">vew meals <span class="sr-only">(current)</span></a>
                     </div>
                 </li>
             </ul>
         </div>
+        <a sec:authorize="isAuthenticated()" th:href="@{/logout}" style="color: black;">logout</a>
     </nav>
 <table class="table mt-5">
     <thead class="thead-light">
@@ -58,13 +58,6 @@
     </thead>
     <tbody>
     <tr>
-        <td>id uey19e0</td>
-        <td>name Alfredo</td>
-        <td>Ingerdients pasta,redsauce</td>
-        <td>Prepwork Boil pasta with water</td>
-        <td>recipe aaa</td>
-    </tr>
-    <tr th:each="recipe: ${recipes}">
         <td th:text="${recipe.id}"></td>
         <td th:text="${recipe.name}"></td>
         <td th:text="${recipe.ingredients}"></td>

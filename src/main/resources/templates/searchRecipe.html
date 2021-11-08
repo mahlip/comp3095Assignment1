@@ -38,14 +38,12 @@
                         View
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/" th:href="@{viewRecipe}">view recipe</a>
                         <a class="dropdown-item" href="/" th:href="@{viewRecipes}">view recipes</a>
                         <a class="dropdown-item" href="/" th:href="@{viewMeals}">vew meals</a>
                     </div>
                 </li>
             </ul>
         </div>
-    </nav>
         <a sec:authorize="isAuthenticated()" th:href="@{/logout}" style="color: black;">logout</a></li>
     </nav>
 <form th:action="@{/processSearch}" method="post" th:object="${search}">

@@ -41,14 +41,13 @@
                         View
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/" th:href="@{viewRecipe}">view recipe</a>
                         <a class="dropdown-item active" href="/" th:href="@{viewRecipes}">view recipes<span class="sr-only">(current)</span></a>
                         <a class="dropdown-item" href="/" th:href="@{viewMeals}">vew meals</a>
                     </div>
                 </li>
             </ul>
         </div>
-        <a sec:authorize="isAuthenticated()" th:href="@{/logout}" style="color: black;">logout</a></li>
+        <a sec:authorize="isAuthenticated()" th:href="@{/logout}" style="color: black;">logout</a>
     </nav>
 <table class="table mt-5">
     <thead class="thead-light">
