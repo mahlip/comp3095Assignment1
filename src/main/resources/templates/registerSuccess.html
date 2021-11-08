@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns: th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Success page">
+    <meta name="keywords" content="HTML, CSS, Bootstrap">
+    <meta name="author" content="Aryan Luthra-101282617">
+    <title>Registration Successful</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<section class="bg-image" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/76.jpg'); height: 100vh;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <li ><a class="navbar-brand" href="#" th:href="@{/}" >Recipe Web Application</a></li>
+    </nav>
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100 ">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card m-2" style="border-radius: 15px;">
+                        <div class="card-body p-5 m-5">
+                            <h3>You have signed up successfully.</h3>
+                            <h4><a th:href="@{/login}">Click here to login</a></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+</body>
+</html>
