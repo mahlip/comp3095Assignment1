@@ -1,3 +1,11 @@
+/*
+ * Project: Recipe Web Application
+ * Assignment: Assignment 1
+ * Author(s): Adam Vandyke
+ * Student Number: 101023594
+ * Date: 2021-11-6
+ * Description: Meal Planner Repository with query for pertinent information.
+ */
 package ca.gbc.comp3095.assignment1.model.repository;
 
 import ca.gbc.comp3095.assignment1.model.MealPlan;

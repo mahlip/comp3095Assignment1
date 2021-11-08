@@ -1,4 +1,3 @@
-package ca.gbc.comp3095.assignment1.web.datatransfer;
 /*
  * Project: < Recipe Web Application >
  * Assignment: < assignment 1 >
@@ -7,6 +6,8 @@ package ca.gbc.comp3095.assignment1.web.datatransfer;
  * Date: 30/10/2021
  * Description: <This data transfer class aims to reduce the number of calls made when working with remote interfaces.>
  */
+package ca.gbc.comp3095.assignment1.web.datatransfer;
+
 public class AppUserRegistrationDataTransfer {
 
     private String firstName;
