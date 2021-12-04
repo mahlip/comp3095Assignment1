@@ -17,4 +17,6 @@ public interface AppUserService extends UserDetailsService {
     AppUser getUser(String name);
 
     AppUser save(AppUserRegistrationDataTransfer appUserRegistrationDataTransfer);
+
+    AppUser getEditUserId(Long id);
 }

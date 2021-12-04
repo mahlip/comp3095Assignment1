@@ -23,6 +23,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
@@ -70,5 +71,44 @@ public class AppUserServiceImpl implements AppUserService{
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<AppUserRole> roles){
         return roles.stream().map(role-> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
+    }
+
+    public void updateResetPasswordToken(String token, String username) throws AppUserNotFoundException{
+        AppUser appUser = appUserRepository.findByEmail(username);
+        if(appUser != null){
+            appUser.setResetPasswordToken(token);
+            appUserRepository.save(appUser);
+        }else{
+            throw new AppUserNotFoundException("Could not find a user with email:" + username);
+        }
+    }
+
+    public AppUser getByResetPasswordToken(String resetPasswordToken){
+        return appUserRepository.findByResetPasswordToken(resetPasswordToken);
+    }
+
+    public void updatePassword(AppUser appUser, String newPassword){
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodePassword = passwordEncoder.encode(newPassword);
+
+        appUser.setPassword(encodePassword);
+        appUser.setResetPasswordToken(null);
+
+        appUserRepository.save(appUser);
+    }
+    public AppUser getEditUserId(Long id){
+        Optional<AppUser> result = appUserRepository.findById(id);
+            if(result.isPresent()){
+                return result.get();
+            } else {
+                throw new UsernameNotFoundException("Could not find any users with ID: " + id);
+            }
+    }
+
+    public void saveAppUser(AppUser appUser, String newPassword){
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodePassword = passwordEncoder.encode(newPassword);
+        appUser.setPassword(encodePassword);
+        this.appUserRepository.save(appUser);
     }
 }

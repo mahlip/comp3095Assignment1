@@ -32,6 +32,8 @@ public class AppUser{
     private String email;
     @Column(name ="PASSWORD",nullable = false, length = 64)
     private String password;
+    @Column(name ="reset_password_token")
+    private String resetPasswordToken;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
@@ -115,6 +117,14 @@ public class AppUser{
 
     public void setRoles(Collection<AppUserRole> roles) {
         this.roles = roles;
+    }
+
+    public String getResetPasswordToken() {
+        return resetPasswordToken;
+    }
+
+    public void setResetPasswordToken(String resetPasswordToken) {
+        this.resetPasswordToken = resetPasswordToken;
     }
 
     public List<Recipe> getRecipes() {
