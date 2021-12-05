@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns: th="http://thymeleaf.org">
+<html xmlns: th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-spring-security5">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Meals page">
+    <meta name="description" content="Ingredient Planner">
     <meta name="keywords" content="HTML, CSS, Bootstrap">
     <meta name="author" content="Aryan Luthra-101282617">
-    <title>View Ingredients</title>
+    <title>Create Ingredients</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
@@ -28,7 +27,7 @@
                     <a class="nav-link" href="/" th:href="@{createRecipe}">Create</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/" th:href="@{mealPlanner}">Plan</a>
+                    <a class="nav-link active" href="/" th:href="@{mealPlanner}">Plan</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="/" th:href="@{ingredientPlanner}">Ingredients<span class="sr-only">(current)</span></a>
@@ -45,37 +44,44 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="/" th:href="@{viewRecipes}">view recipes</a>
-                        <a class="dropdown-item active" href="/" th:href="@{viewMeals}">view meals</a>
-                        <a class="dropdown-item" href="/" th:href="@{viewIngredients}">view ingredients <span class="sr-only">(current)</span></a>
+                        <a class="dropdown-item" href="/" th:href="@{viewMeals}">view meals</a>
+                        <a class="dropdown-item" href="/" th:href="@{viewIngredients}">view ingredients</a>
                     </div>
                 </li>
             </ul>
-        </div>
-        <a sec:authorize="isAuthenticated()" th:href="@{/logout}" style="color: black;">logout</a>
+        </div><a sec:authorize="isAuthenticated()" th:href="@{/logout}" style="color: black;">logout</a>
     </nav>
+    <!-- Create HTML registration form -->
+    <div class="container m-5">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
 
-    <table class="table mt-5">
-        <thead class="thead-light">
-        <tr>
-            <th>Id</th>
-            <th>Recipe Name</th>
-            <th>Ingredient</th>
-            <th>Shopped</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="ingredient: ${ingredients}">
-            <td th:text="${ingredient.id}"></td>
-            <td th:text="${ingredient.name}"></td>
-            <td th:text="${ingredient.ingredient}"></td>
-            <td>
-                <form>
-                    <button class="btn btn-outline-success" type="submit">Add to shopping list</button>
+                <!-- success message -->
+                <h1>Add To Shopping List</h1>
+
+                <form th:action="@{/processShopping}" method="post" th:object="${record}">
+
+                    <div class="form-group">
+                        <label class="control-label" for="name">
+                            Ingredient Name
+                        </label>
+                        <div class="ingredient-dropdown">
+                            <select name="ingredient" id="ingredient" th:field="*{name}">
+                                <option value="" selected="selected">Select ingredient</option>
+                                <tr th:each="ingredient: ${ingredients}">
+                                    <option th:value="${ingredient.ingredient}" id="name" th:text="${ingredient.ingredient}"></option>
+                                </tr>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
                 </form>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+            </div>
+        </div>
+    </div>
 </section>
 </body>
 </html>

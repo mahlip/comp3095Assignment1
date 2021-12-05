@@ -58,19 +58,17 @@
         <thead class="thead-light">
         <tr>
             <th>Id</th>
-            <th>Recipe Name</th>
             <th>Ingredient</th>
             <th>Shopped</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="ingredient: ${ingredients}">
-            <td th:text="${ingredient.id}"></td>
-            <td th:text="${ingredient.name}"></td>
-            <td th:text="${ingredient.ingredient}"></td>
+        <tr th:each="shop: ${shopping}">
+            <td th:text="${shop.id}"></td>
+            <td th:text="${shop.name}"></td>
             <td>
                 <form>
-                    <button class="btn btn-outline-success" type="submit">Add to shopping list</button>
+                    <button class="btn btn-outline-success" type="submit">Remove from shopping list</button>
                 </form>
             </td>
         </tr>
