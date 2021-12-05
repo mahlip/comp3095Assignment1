@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html   xmlns="http://www.w3.org/1999/xhtml"
-        xmlns: th="http://thymeleaf.org"
-        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-spring-security5">
+<html xmlns: th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-spring-security5">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="My Profile page">
+    <meta name="description" content="Ingredient Planner">
     <meta name="keywords" content="HTML, CSS, Bootstrap">
     <meta name="author" content="Aryan Luthra-101282617">
-    <title>My Profile </title>
+    <title>Assignment1 Home Page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
@@ -28,7 +27,7 @@
                     <a class="nav-link" href="/" th:href="@{createRecipe}">Create</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/" th:href="@{mealPlanner}">Plan</a>
+                    <a class="nav-link active" href="/" th:href="@{mealPlanner}">Plan</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="/" th:href="@{ingredientPlanner}">Ingredients<span class="sr-only">(current)</span></a>
@@ -44,56 +43,55 @@
                         View
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item active" href="/" th:href="@{viewRecipes}">view recipes<span class="sr-only">(current)</span></a>
+                        <a class="dropdown-item" href="/" th:href="@{viewRecipes}">view recipes</a>
                         <a class="dropdown-item" href="/" th:href="@{viewMeals}">view meals</a>
                         <a class="dropdown-item" href="/" th:href="@{viewIngredients}">view ingredients</a>
                     </div>
                 </li>
             </ul>
-        </div>
-        <a sec:authorize="isAuthenticated()" th:href="@{/logout}" style="color: black;">logout</a>
+        </div><a sec:authorize="isAuthenticated()" th:href="@{/logout}" style="color: black;">logout</a>
     </nav>
-    <table class="table mt-5">
-        <thead class="thead-light">
-        <tr>
-            <th>Id</th>
-            <th>Recipe Name</th>
-            <th>Ingredients</th>
-            <th>Prepwork</th>
-            <th>Recipe</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="recipe: ${recipes}">
-            <td th:text="${recipe.id}"></td>
-            <td th:text="${recipe.name}"></td>
-            <td th:text="${recipe.ingredients}"></td>
-            <td th:text="${recipe.prepwork} ?: 'None'"></td>
-            <td th:text="${recipe.recipe}"></td>
-        </tr>
-        </tbody>
-    </table>
-    <table class="table mt-5">
-        <thead class="thead-light">
-        <tr>
-            <th>Id</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="appUser: ${appUser}">
-            <td th:text="${appUser.id}"></td>
-            <td th:text="${appUser.firstName}"></td>
-            <td th:text="${appUser.lastName}"></td>
-            <td th:text="${appUser.email} ?: 'None'"></td>
-            <td>
-                <a th:href="@{/showEditPage/{id}(id=${appUser.id})}">Edit</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <!-- Create HTML registration form -->
+    <div class="container m-5">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+
+                <!-- success message -->
+                <h1>Create MealPlan</h1>
+
+                <form th:action="@{/processIngredient}" method="post" th:object="${record}">
+
+                    <div class="form-group">
+                        <label class="control-label" for="name">
+                            Recipe Name
+                        </label>
+                        <div class="recipe-dropdown">
+                            <select name="recipe" id="recipe" th:field="*{name}">
+                                <option value="" selected="selected">Select recipe</option>
+                                <tr th:each="recipe: ${recipes}">
+                                    <option th:value="${recipe.name}" id="name" th:text="${recipe.name}"></option>
+                                </tr>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="name">Ingredient Name</label>
+                        <input type="text" id="ingredient" class="form-control" th:field="*{ingredient}" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="checkbox" id="private" name="private">
+                        <label for="private"> Add To Shopping List</label>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </section>
 </body>
 </html>
