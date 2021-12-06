@@ -22,11 +22,6 @@ import java.util.List;
 public interface ShoppingRepository extends JpaRepository<Shopping, Long> {
     @Query("SELECT s FROM Shopping s WHERE LOWER(s.name) LIKE LOWER(concat('%', concat(?1, '%')))")
     public List<Shopping> searchIgnoreCase(String keyword);
-/*
-    @Modifying
-    @Transactional
-    @Query("DELETE FROM Shopping s WHERE s.id = :id")
-    public void deleteIngredientsById(Long id);
- */
+
 }
 

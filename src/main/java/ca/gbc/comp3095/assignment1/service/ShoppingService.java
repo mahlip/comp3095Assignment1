@@ -16,7 +16,7 @@ import java.util.List;
 
 public interface ShoppingService {
     Shopping save(ShoppingDataTransfer shoppingDataTransfer, String name);
-
+    void delete(Shopping Shop);
     List<Shopping> findAll();
 
     Shopping findById(long id);

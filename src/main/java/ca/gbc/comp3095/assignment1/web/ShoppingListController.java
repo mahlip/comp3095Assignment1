@@ -14,6 +14,7 @@ import ca.gbc.comp3095.assignment1.model.Ingredients;
 import ca.gbc.comp3095.assignment1.service.AppUserService;
 import ca.gbc.comp3095.assignment1.service.IngredientsService;
 import ca.gbc.comp3095.assignment1.service.ShoppingService;
+import ca.gbc.comp3095.assignment1.web.datatransfer.FavouriteDataTransfer;
 import ca.gbc.comp3095.assignment1.web.datatransfer.ShoppingDataTransfer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -67,6 +68,23 @@ public class ShoppingListController {
         return "/viewShoppingList";
     }
 
+    @RequestMapping(value = "/processRemoval", method = RequestMethod.POST)
+    public String removeIngredient(@ModelAttribute("record") FavouriteDataTransfer favouriteDataTransfer, Model model, Principal principal){
+        Shopping Shop = shoppingService.findById(favouriteDataTransfer.getId());
+        shoppingService.delete(Shop);
+
+        List<Shopping> allShopping,shopping;
+        allShopping = shoppingService.findAll();
+        shopping = new ArrayList<>();
+        for (Shopping shop:allShopping) {
+            if(shop.getOwner().equals(appUserService.getUser(principal.getName())) || shop.isShared()){
+                shopping.add(shop);
+            }
+        }
+        model.addAttribute("shopping",shopping);
+        model.addAttribute("record",new FavouriteDataTransfer());
+        return "viewShoppingList";
+    }
 
     @GetMapping(value = "/viewShoppingList")
     public String searchRecipes(Model model, Principal principal){
@@ -79,6 +97,7 @@ public class ShoppingListController {
             }
         }
         model.addAttribute("shopping",shopping);
+        model.addAttribute("record",new FavouriteDataTransfer());
         return "viewShoppingList";
     }
 }

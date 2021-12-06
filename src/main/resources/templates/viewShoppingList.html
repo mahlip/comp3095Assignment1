@@ -67,14 +67,18 @@
             <td th:text="${shop.id}"></td>
             <td th:text="${shop.name}"></td>
             <td>
-                <form>
-                    <button class="btn btn-outline-success" type="submit">Remove from shopping list</button>
-                </form>
+            <form th:action="@{/processRemoval}" method="post" th:object="${record}">
+                <input type="hidden" th:value="${shop.id}" th:attr="name='id'"/>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Remove from shopping list</button>
+                </div>
+            </form>
+        </span>
             </td>
         </tr>
         </tbody>
     </table>
-    
+
 </section>
 </body>
 </html>

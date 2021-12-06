@@ -35,6 +35,11 @@ public class ShoppingServiceImpl implements ShoppingService{
     }
 
     @Override
+    public void delete(Shopping Shop) {
+        shoppingRepository.delete(Shop);
+    }
+
+    @Override
     public List<Shopping> findAll(){
         return shoppingRepository.findAll();
     }
