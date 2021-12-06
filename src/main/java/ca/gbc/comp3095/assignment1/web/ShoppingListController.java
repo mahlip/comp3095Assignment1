@@ -66,7 +66,7 @@ public class ShoppingListController {
         model.addAttribute("shopping",shoppingService.save(shoppingDataTransfer,principal.getName()));
         return "/viewShoppingList";
     }
-    
+
 
     @GetMapping(value = "/viewShoppingList")
     public String searchRecipes(Model model, Principal principal){
