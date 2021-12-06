@@ -34,6 +34,9 @@
                     <a class="nav-link active" href="/" th:href="@{ingredientPlanner}">Ingredients<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link active" href="/" th:href="@{shoppingPlanner}">Shopping<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/" th:href="@{searchRecipe}">Search</a>
                 </li>
                 <li class="nav-item">
@@ -45,8 +48,11 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="/" th:href="@{viewRecipes}">view recipes</a>
+                        <a class="dropdown-item" href="/" th:href="@{viewMyRecipes}">view my recipes</a>
+                        <a class="dropdown-item" href="/" th:href="@{viewFavouriteRecipes}">view favourites</a>
                         <a class="dropdown-item active" href="/" th:href="@{viewMeals}">view meals</a>
-                        <a class="dropdown-item" href="/" th:href="@{viewIngredients}">view ingredients <span class="sr-only">(current)</span></a>
+                        <a class="dropdown-item" href="/" th:href="@{viewIngredients}">view ingredients</a>
+                        <a class="dropdown-item" href="/" th:href="@{viewShoppingList}">view shopping list <span class="sr-only">(current)</span></a>
                     </div>
                 </li>
             </ul>

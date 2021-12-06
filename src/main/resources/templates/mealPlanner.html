@@ -27,7 +27,13 @@
                     <a class="nav-link" href="/" th:href="@{createRecipe}">Create</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="/" th:href="@{mealPlanner}">Plan<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/" th:href="@{mealPlanner}">Plan<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/" th:href="@{ingredientPlanner}">Ingredients</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/" th:href="@{shoppingPlanner}">Shopping</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/" th:href="@{searchRecipe}">Search</a>
@@ -41,11 +47,16 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="/" th:href="@{viewRecipes}">view recipes</a>
-                        <a class="dropdown-item" href="/" th:href="@{viewMeals}">vew meals</a>
+                        <a class="dropdown-item" href="/" th:href="@{viewMyRecipes}">view my recipes</a>
+                        <a class="dropdown-item" href="/" th:href="@{viewFavouriteRecipes}">view favourites</a>
+                        <a class="dropdown-item active" href="/" th:href="@{viewMeals}">view meals</a>
+                        <a class="dropdown-item" href="/" th:href="@{viewIngredients}">view ingredients</a>
+                        <a class="dropdown-item" href="/" th:href="@{viewShoppingList}">view shopping list</a>
                     </div>
                 </li>
             </ul>
-        </div><a sec:authorize="isAuthenticated()" th:href="@{/logout}" style="color: black;">logout</a>
+        </div>
+        <a sec:authorize="isAuthenticated()" th:href="@{/logout}" style="color: black;">logout</a>
     </nav>
 <!-- Create HTML registration form -->
 <div class="container m-5">
