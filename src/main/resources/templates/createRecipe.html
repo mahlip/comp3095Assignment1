@@ -63,9 +63,12 @@
                     <input type="text" id="name" class="form-control" th:field="*{name}" required/>
                 </div>
 
-                <div class="form-group">
-                    <label class="control-label" for="ingredients">Ingredients</label>
-                    <textarea id ="ingredients" name="ingredients" th:field="*{ingredients}" required>Enter text here...</textarea>
+                <div clas="form-group">
+                    <label class="control-label" for="ingredients">Ingredients:</label>
+                    <select id="ingredients" name="ingredients" th:field="*{ingredients}" required multiple>
+                        <option th:each="i : ${ingredients}" th:text="${i.ingredient}" th:value="${i.id}"></option>
+                    </select>
+
                 </div>
 
                 <div class="form-group">

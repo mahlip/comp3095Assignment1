@@ -8,6 +8,7 @@
  */
 package ca.gbc.comp3095.assignment1.service;
 
+import ca.gbc.comp3095.assignment1.model.Ingredients;
 import ca.gbc.comp3095.assignment1.model.Recipe;
 import ca.gbc.comp3095.assignment1.model.repository.RecipeRepository;
 import ca.gbc.comp3095.assignment1.web.datatransfer.RecipeDataTransfer;
@@ -25,13 +26,17 @@ public class RecipeServiceImpl implements RecipeService{
     }
 
     @Override
-    public Recipe save(RecipeDataTransfer recipeDataTransfer, String name) {
-        Recipe recipe = new Recipe(recipeDataTransfer.getIngredients(),
+    public Recipe save(List<Ingredients> ingredients, RecipeDataTransfer recipeDataTransfer, String name) {
+        Recipe recipe = new Recipe(ingredients,
                 recipeDataTransfer.getPrepWork(),
                 recipeDataTransfer.getRecipe(),
                 recipeDataTransfer.getName(),
                 !recipeDataTransfer.getShared(),
                 appUserService.getUser(name));
+        return recipeRepository.save(recipe);
+    }
+
+    public Recipe save(Recipe recipe){
         return recipeRepository.save(recipe);
     }
 

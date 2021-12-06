@@ -8,8 +8,11 @@
  */
 package ca.gbc.comp3095.assignment1.web.datatransfer;
 
+import ca.gbc.comp3095.assignment1.model.Ingredients;
+import java.util.Set;
+
 public class RecipeDataTransfer {
-    private String ingredients;
+    private Set<Ingredients> ingredients;
     private String prepWork;
     private String recipe;
     private String name;
@@ -51,11 +54,11 @@ public class RecipeDataTransfer {
         this.name = name;
     }
 
-    public String getIngredients() {
+    public Set<Ingredients> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(String ingredients) {
+    public void setIngredients(Set<Ingredients> ingredients) {
         this.ingredients = ingredients;
     }
 

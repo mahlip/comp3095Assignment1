@@ -28,24 +28,24 @@
                     <a class="nav-link" href="#">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/" th:href="@{createRecipe}">Create</a>
+                    <a class="nav-link" href="/" th:href="@{/createRecipe}">Create</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/" th:href="@{mealPlanner}">Plan</a>
+                    <a class="nav-link" href="/" th:href="@{/mealPlanner}">Plan</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/" th:href="@{searchRecipe}">Search</a>
+                    <a class="nav-link" href="/" th:href="@{/searchRecipe}">Search</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/" th:href="@{myProfile}">My Profile</a>
+                    <a class="nav-link" href="/" th:href="@{/myProfile}">My Profile</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         View
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/" th:href="@{viewRecipes}">view recipes</a>
-                        <a class="dropdown-item" href="/" th:href="@{viewMeals}">vew meals</a>
+                        <a class="dropdown-item" href="/" th:href="@{/viewRecipes}">view recipes</a>
+                        <a class="dropdown-item" href="/" th:href="@{/viewMeals}">vew meals</a>
                     </div>
                 </li>
             </ul>
@@ -56,17 +56,37 @@
     <div class="card text-center " style="width: 45rem;" >
         <h5 class="card-header" th:text="${recipe.name}"></h5>
         <div class="card-body">
-            <h5 class="card-title" >Ingerdients</h5>
-            <p class="card-text" th:text="${recipe.ingredients}"></p>
+            <h5 class="card-title" >Ingredients</h5>
+            <p class="card-text"><div th:each="i : ${recipe.recipeIngredients}"><div th:text="${i.ingredient}"></div></div></p>
+            <form th:action="@{/recipeIngredients}" method="post" th:object="${record}">
+                <input type="hidden" th:value="${recipe.id}" th:attr="name='id'"/>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">View Ingredients</button>
+                </div>
+            </form>
         </div>
         <div class="card-body">
             <h5 class="card-title" >Prep work</h5>
-            <p class="card-text" th:text="${recipe.prework}"></span><span th:unless="${recipe.prepwork} == ''"><span th:text="${recipe.prepwork}"></span></span></p>
+            <p class="card-text" th:text="${recipe.prepwork}"></span><span th:unless="${recipe.prepwork} == ''"><span th:text="${recipe.prepwork}"></span></span></p>
         </div>
         <div class="card-body">
             <h5 class="card-title" >Insturctions</h5>
             <p class="card-text" th:text="${recipe.recipe}"></p>
         </div>
+        <span th:if="${!favourite}">
+            <form th:action="@{/faveRecipe}" method="post" th:object="${record}">
+                <input type="hidden" th:value="${recipe.id}" th:attr="name='id'"/>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Make Favourite</button>
+                </div>
+            </form>
+        </span>
+        <span th:unless="${!favourite}">
+            <div>
+                Recipe is a Favourite
+            </div>
+
+        </span>
     </div>
 </div>
 
