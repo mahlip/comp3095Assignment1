@@ -52,7 +52,7 @@ public class MealPlannerController {
         allRecipes = recipeService.findAll();
         recipes = new ArrayList<>();
         for (Recipe recipe:allRecipes) {
-            if(recipe.getName().equals(principal.getName()) || recipe.isShared()){
+            if(recipe.getOwner().getEmail().equals(principal.getName()) || recipe.isShared()){
                 recipes.add(recipe);
             }
         }

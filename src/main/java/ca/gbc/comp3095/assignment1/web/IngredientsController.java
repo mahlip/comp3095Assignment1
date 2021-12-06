@@ -14,6 +14,7 @@ import ca.gbc.comp3095.assignment1.model.Recipe;
 import ca.gbc.comp3095.assignment1.service.AppUserService;
 import ca.gbc.comp3095.assignment1.service.IngredientsService;
 import ca.gbc.comp3095.assignment1.service.RecipeService;
+import ca.gbc.comp3095.assignment1.web.datatransfer.FavouriteDataTransfer;
 import ca.gbc.comp3095.assignment1.web.datatransfer.IngredientDataTransfer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -76,6 +77,17 @@ public class IngredientsController {
             if(ingredient.getOwner().equals(appUserService.getUser(principal.getName())) || ingredient.isShared()){
                 ingredients.add(ingredient);
             }
+        }
+        model.addAttribute("ingredients",ingredients);
+        return "viewIngredients";
+    }
+
+    @PostMapping(value = "/recipeIngredients")
+    public String recipeIngredients(@ModelAttribute("record") FavouriteDataTransfer favouriteDataTransfer, Model model, Principal principal){
+        Recipe recipe = recipeService.findById(favouriteDataTransfer.getId());
+        List<Ingredients> ingredients = new ArrayList<>();
+        for (Ingredients ingredient:recipe.getRecipeIngredients()) {
+                ingredients.add(ingredient);
         }
         model.addAttribute("ingredients",ingredients);
         return "viewIngredients";

@@ -63,7 +63,7 @@
     <tr>
         <td th:text="${recipe.id}"></td>
         <td th:text="${recipe.name}"></td>
-        <td th:text="${recipe.ingredients}"></td>
+        <td><div th:each="i : ${recipe.recipeIngredients}"><div th:text="${i.ingredient}"></div></div></td>
         <td th:text="${recipe.prepwork} ?: 'None'"></td>
         <td th:text="${recipe.recipe}"></td>
     </tr>

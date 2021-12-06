@@ -10,8 +10,7 @@
 package ca.gbc.comp3095.assignment1.model;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Date;
+import java.util.*;
 
 @Entity
 @Table(name ="INGREDIENTS")
@@ -36,6 +35,12 @@ public class Ingredients {
     @Column(name ="PUBLIC")
     private boolean shared;
 
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "recipe_ingredients",
+            joinColumns = @JoinColumn(name = "ING_ID"),
+            inverseJoinColumns = @JoinColumn(name = "RECIPE_ID"))
+    List<Recipe> uses;
 
     public Ingredients(String name,
                        String ingredient,

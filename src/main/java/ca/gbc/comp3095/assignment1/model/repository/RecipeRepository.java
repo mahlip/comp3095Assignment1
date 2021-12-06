@@ -17,6 +17,6 @@ import java.util.List;
 
 @Repository
 public interface RecipeRepository extends JpaRepository<Recipe, Long> {
-    @Query("SELECT r FROM Recipe r WHERE LOWER(CONCAT(r.name,' ',r.prepwork,' ',r.ingredients,' ',r.recipe)) LIKE LOWER(concat('%', concat(?1, '%')))")
+    @Query("SELECT r FROM Recipe r WHERE LOWER(CONCAT(r.name,' ',r.prepwork,' ',r.recipe)) LIKE LOWER(concat('%', concat(?1, '%')))")
     public List<Recipe> searchIgnoreCase(String keyword);
 }

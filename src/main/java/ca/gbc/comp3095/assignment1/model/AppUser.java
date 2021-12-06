@@ -54,6 +54,9 @@ public class AppUser{
     )
     private List<Recipe> recipes = new ArrayList<>();
 
+    @ManyToMany(mappedBy = "lovers")
+    List<Recipe> favourites;
+
     public AppUser(String firstName,
                 String lastName,
                 String email,
@@ -105,6 +108,14 @@ public class AppUser{
 
     public String getPassword() {
         return password;
+    }
+
+    public List<Recipe> getFavourites() {
+        return favourites;
+    }
+
+    public void setFavourites(List<Recipe> favourites) {
+        this.favourites = favourites;
     }
 
     public void setPassword(String password) {
