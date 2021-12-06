@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns: th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Edit Profile">
+    <meta name="keywords" content="HTML, CSS, Bootstrap">
+    <meta name="author" content="Aryan Luthra-101282617">
+    <title>Registration</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<section class="bg-image" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/76.jpg');
+            height: 100vh">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#" th:href="@{/}" >Recipe Web Application</a>
+    </nav>
+    <br>
+    <br>
+    <div class="container ">
+        <div class="row justify-content-center m-12">
+            <div class="col-md-6 col-md-offset-3">
+                <!-- success message -->
+                <h1>Edit Profile</h1>
+                <form th:action="@{/saveAppUser}" method="post" th:object="${user}">
+                    <input type="hidden" th:field="*{id}">
+                    <div class="form-group">
+                        <label class="control-label" for="firstName">
+                            First Name
+                        </label>
+                        <input type="text" id="firstName" class="form-control" th:field="*{firstName}" required/>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="lastName">
+                            Last Name
+                        </label>
+                        <input type="text" id="lastName" class="form-control" th:field="*{lastName}" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="email">
+                            Email
+                        </label>
+                        <input type="text" id="email" class="form-control" th:field="*{email}" required/>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="password">
+                            Password
+                        </label>
+                        <input id="password" class="form-control" type="password" th:field="*{password}" required/>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-secondary" onclick="cancelForm()">Cancel</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+    function cancelForm(){
+        window.location = "[[@{/myProfile}]]"
+    }
+</script>
+</body>
+</html>
