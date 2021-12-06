@@ -1,3 +1,12 @@
+/*
+ * Project: Recipe Web Application
+ * Assignment: Assignment 2
+ * Author(s): Adam Vandyke
+ * Student Number: 101023594
+ * Date: 2021-12-5
+ * Description: Shopping Repository with query for pertinent information.
+ */
+
 package ca.gbc.comp3095.assignment1.model.repository;
 
 import ca.gbc.comp3095.assignment1.model.Shopping;

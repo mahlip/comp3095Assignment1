@@ -65,9 +65,9 @@
                         <label class="control-label" for="name">
                             Recipe Name
                         </label>
-                        <div class="recipe-dropdown">
+                        <div class="recipe-dropdown">3
                             <select name="recipe" id="recipe" th:field="*{name}">
-                                <option value="" selected="selected">Select ingredient</option>
+                                <option value="" selected="selected">Select Recipe</option>
                                 <tr th:each="recipe: ${recipes}">
                                     <option th:value="${recipe.name}" id="name" th:text="${recipe.name}"></option>
                                 </tr>

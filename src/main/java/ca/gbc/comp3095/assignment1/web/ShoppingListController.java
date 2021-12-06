@@ -1,3 +1,12 @@
+/*
+ * Project: Recipe Web Application
+ * Assignment: Assignment 2
+ * Author(s): Adam Vandyke
+ * Student Number: 101023594
+ * Date: 2021-12-5
+ * Description: Shopping List  Controller for the purpose of controlling individual actions associated with the Shopping Planner.
+ */
+
 package ca.gbc.comp3095.assignment1.web;
 
 import ca.gbc.comp3095.assignment1.model.Shopping;
@@ -57,6 +66,7 @@ public class ShoppingListController {
         model.addAttribute("shopping",shoppingService.save(shoppingDataTransfer,principal.getName()));
         return "/viewShoppingList";
     }
+    
 
     @GetMapping(value = "/viewShoppingList")
     public String searchRecipes(Model model, Principal principal){

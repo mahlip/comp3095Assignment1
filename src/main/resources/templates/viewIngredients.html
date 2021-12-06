@@ -64,16 +64,18 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="ingredient: ${ingredients}">
-            <td th:text="${ingredient.id}"></td>
-            <td th:text="${ingredient.name}"></td>
-            <td th:text="${ingredient.ingredient}"></td>
-            <td>
-                <form>
-                    <button class="btn btn-outline-success" type="submit">Add to shopping list</button>
-                </form>
-            </td>
-        </tr>
+        <form th:action="@{/processShopping}" method="post" th:object="${record}">
+            <div class="form-group">
+                <tr th:each="ingredient: ${ingredients}">
+                    <td th:text="${ingredient.id}"></td>
+                    <td th:text="${ingredient.name}" ></td>
+                    <td th:text="${ingredient.ingredient}" ></td>
+                    <td>
+                        <button th:value="${ingredient.ingredient}" class="btn btn-outline-success" type="submit">Add to shopping list</button>
+                    </td>
+                </tr>
+            </div>
+        </form>
         </tbody>
     </table>
 </section>

@@ -3,8 +3,8 @@
  * Assignment: Assignment 2
  * Author(s): Adam Vandyke
  * Student Number: 101023594
- * Date: 2021-11-6
- * Description: Meal Planner Service implementation for the purpose of providing functions related to saving and locating Meal plans from the repository.
+ * Date: 2021-12-5
+ * Description: Ingredients Class for the purpose of creating new meal plans and tables.
  */
 
 package ca.gbc.comp3095.assignment1.model;

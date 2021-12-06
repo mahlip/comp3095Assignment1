@@ -3,8 +3,8 @@
  * Assignment: Assignment 2
  * Author(s): Adam Vandyke
  * Student Number: 101023594
- * Date: 2021-11-6
- * Description:
+ * Date: 2021-12-5
+ * Description: Ingredients Service for the purpose of providing functions related to saving and locating ingredients from the repository.
  */
 
 package ca.gbc.comp3095.assignment1.service;
